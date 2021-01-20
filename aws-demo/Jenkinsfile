@@ -4,6 +4,8 @@ node {
  
     stage('Init') {
       echo 'Terraform init'
+      sh 'pwd'
+      sh 'ls -la'
       sh 'terraform init'
     }
 
