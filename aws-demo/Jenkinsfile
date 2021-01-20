@@ -9,14 +9,12 @@ node {
  
     stage('Init') {
       echo 'Terraform init'
-      sh 'pwd'
-      sh 'ls -la'
       sh 'terraform init'
     }
 
     stage('Plan') {
       echo 'Terraform plan'
-    
+      sh 'terraform plan'
     }
   }
 }
