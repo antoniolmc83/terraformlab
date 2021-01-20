@@ -1,0 +1,13 @@
+node {
+  
+  stage('Init') {
+    echo 'Terraform init'
+    sh 'terraform init'
+  }
+
+  stage('Plan') {
+    echo 'Terraform plan'
+    
+  }
+}
+
