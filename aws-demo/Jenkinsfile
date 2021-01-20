@@ -1,13 +1,16 @@
 node {
-  
-  stage('Init') {
-    echo 'Terraform init'
-    sh 'terraform init'
-  }
+ 
+  dir('aws-demo') {
+ 
+    stage('Init') {
+      echo 'Terraform init'
+      sh 'terraform init'
+    }
 
-  stage('Plan') {
-    echo 'Terraform plan'
+    stage('Plan') {
+      echo 'Terraform plan'
     
+    }
   }
 }
 
