@@ -25,7 +25,11 @@ node {
 
     stage('Approval') {
       def userInput = input(id: 'confirm', message: 'Apply terraform?', parameters: [ [$class: 'BooleanParameterDefinition', defaultValue: false, description: 'Apply terraform', name: 'confirm'] ] )
-      echo userInput
+      if ( userInput ) {
+         echo 'true'
+      } else {
+        echo 'false'
+      }
     }
   }
 }
