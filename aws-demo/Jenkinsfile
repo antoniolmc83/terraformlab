@@ -5,7 +5,7 @@ node {
   }
 
   stage('Init env variables') {
-    withCredentials(([usernamePassword(credentialsId: 'antonio.mc_keyid', passwordVariable: 'access_id', usernameVariable: 'key_id')]) {
+    withCredentials([usernamePassword(credentialsId: 'antonio.mc_keyid', passwordVariable: 'access_id', usernameVariable: 'key_id')]) {
    
       env.AWS_ACCESS_KEY_ID = ${key_id}
       env.AWS_SECRET_ACCESS_KEY = ${access_id}
