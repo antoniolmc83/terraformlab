@@ -1,6 +1,6 @@
 node {
  
-  dir('aws-demo') {
+  //dir('aws-demo') {
  
     stage('Init') {
       echo 'Terraform init'
@@ -13,6 +13,6 @@ node {
       echo 'Terraform plan'
     
     }
-  }
+  //}
 }
 
