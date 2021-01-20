@@ -1,5 +1,6 @@
 node {
 
+  def userInput = false
   stage('Scm') {
     checkout scm
   }
@@ -27,11 +28,17 @@ node {
     }
 
     stage('Approval') {
-      def userInput = input(id: 'confirm', message: 'Apply terraform?', parameters: [ [$class: 'BooleanParameterDefinition', defaultValue: false, description: 'Apply terraform', name: 'confirm'] ] )
+      userInput = input(id: 'confirm', message: 'Apply terraform?', parameters: [ [$class: 'BooleanParameterDefinition', defaultValue: false, description: 'Apply terraform', name: 'confirm'] ] )
+         
+    }
+
+    stage('Apply') {
+      
       if ( userInput ) {
-         echo 'true'
+        
+        sh 'terraform apply -input=false' 
       } else {
-        echo 'false'
+        echo 'Apply step not confimed'
       }
     }
   }
