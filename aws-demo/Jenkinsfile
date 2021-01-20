@@ -5,9 +5,12 @@ node {
   }
 
   stage('Init env variables') {
-    env.AWS_ACCESS_KEY_ID = ''
-    env.AWS_SECRET_ACCESS_KEY = ''
-    env.AWS_DEFAULT_REGION = 'us-east-2'
+    withCredentials(([usernamePassword(credentialsId: 'antonio.mc_keyid', passwordVariable: 'access_id', usernameVariable: 'key_id')]) {
+   
+      env.AWS_ACCESS_KEY_ID = ${key_id}
+      env.AWS_SECRET_ACCESS_KEY = ${access_id}
+      env.AWS_DEFAULT_REGION = 'us-east-2'
+    }
   }
  
   dir('aws-demo') {
