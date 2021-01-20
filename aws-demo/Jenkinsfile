@@ -5,8 +5,8 @@ node {
   }
 
   stage('Init env variables') {
-    env.AWS_ACCESS_KEY_ID = 'AKIAIPEJXBD7BGCBFZJA'
-    env.AWS_SECRET_ACCESS_KEY = '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'
+    env.AWS_ACCESS_KEY_ID = ''
+    env.AWS_SECRET_ACCESS_KEY = ''
     env.AWS_DEFAULT_REGION = 'us-east-2'
   }
  
