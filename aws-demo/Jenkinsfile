@@ -38,7 +38,8 @@ node {
         
         sh 'terraform apply -auto-approve -input=false' 
       } else {
-        echo 'Apply step not confimed'
+        
+        sh 'terraform destroy -auto-approve' 
       }
     }
   }
