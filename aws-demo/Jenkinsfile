@@ -28,7 +28,7 @@ node {
     }
 
     stage('Choose action') {
-      actionUserInput = input(id: 'action', message: 'Choose action', parameters: [ [$class: 'ChoiceParameterDefinition', choices: "Apply\nDestroy", description: 'Choose action', name: 'Action'] ] )
+      actionUserInput = input(id: 'action', message: 'Choose action', parameters: [ [$class: 'ChoiceParameterDefinition', choices: "Apply\nDestroy", description: 'Apply or destroy terraform', name: 'Action'] ] )
 
       echo "Action selected: ${actionUserInput}"	
 
@@ -42,11 +42,14 @@ node {
     stage('Apply') {
       
       if ( userInput ) {
-        
-        sh 'terraform apply -auto-approve -input=false' 
+        if ( actionUserInput == 'Apply' ) {         
+          sh 'terraform apply -auto-approve -input=false' 
+        } else {
+          sh 'terraform destroy -auto-approve' 
+        } 
+
       } else {
-        
-        sh 'terraform destroy -auto-approve' 
+        echo 'Action not confirmed!' 
       }
     }
   }
