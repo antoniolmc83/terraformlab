@@ -27,6 +27,10 @@ node {
       sh 'terraform plan'
     }
 
+    stage('Choose action') {
+      actionUserInput = input(id: 'action', message: 'Choose action', parameters: [ [$class: 'ChoiceParameterDefinition', choices: "Apply\nDestroy", description: 'Choose action', name: 'action'] ] )
+    }
+
     stage('Approval') {
       userInput = input(id: 'confirm', message: 'Apply terraform?', parameters: [ [$class: 'BooleanParameterDefinition', defaultValue: false, description: 'Apply terraform', name: 'confirm'] ] )
          
