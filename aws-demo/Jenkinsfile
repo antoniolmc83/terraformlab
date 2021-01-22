@@ -28,7 +28,10 @@ node {
     }
 
     stage('Choose action') {
-      actionUserInput = input(id: 'action', message: 'Choose action', parameters: [ [$class: 'ChoiceParameterDefinition', choices: "Apply\nDestroy", description: 'Choose action', name: 'action'] ] )
+      actionUserInput = input(id: 'action', message: 'Choose action', parameters: [ [$class: 'ChoiceParameterDefinition', choices: "Apply\nDestroy", description: 'Choose action', name: 'Action'] ] )
+
+      echo "Action selected: ${actionUserInput}"	
+
     }
 
     stage('Approval') {
